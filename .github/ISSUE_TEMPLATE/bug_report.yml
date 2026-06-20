@@ -1,0 +1,65 @@
+name: Bug report
+description: Report incorrect behaviour in the integration API
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Please do **not** paste real ERP credentials, webhook secrets, or production URLs.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Clear description of the bug
+      placeholder: Stock sync returns 500 after product sync succeeds...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      placeholder: Stock sync should upsert stock_levels and write sync_logs with status success
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. cp .env.example .env
+        2. composer test
+        3. ...
+    validations:
+      required: true
+
+  - type: input
+    id: php-version
+    attributes:
+      label: PHP version
+      placeholder: "8.2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Local (SQLite)
+        - Docker (MySQL)
+        - Docker (PostgreSQL profile)
+        - GitHub Actions CI
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs or test output
+      description: Paste sanitized output only
+      render: shell
